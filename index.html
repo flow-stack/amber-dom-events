@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Amber DOM events</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="Sebastian Sastre" />
+    <script type='text/javascript' src='the.js'></script>
+  </head>
+
+  <body>
+  <h1>Amber DOM events</h1>
+  <p>Because you really miss them if you don't have them!</p>
+
+    <a id="legacy"
+        onclick="require('amber/helpers').globals.Browser._open()"
+        style="position: fixed; bottom: 0; right: 0; opacity: 0.35">Legacy IDE</a>
+
+    <a id="helios"
+      onclick="require('amber/helpers').popupHelios()"
+      style="position: fixed; bottom: 0; right: 120px">Helios</a>
+
+  <script type='text/javascript'>
+      require(['app'], function (amber) {
+          amber.initialize({
+            //used for all new packages in IDE
+            'transport.defaultAmdNamespace': "domevents"
+          });
+          amber.globals.DOMEvents._start();
+      });
+  </script>
+  </body>
+
+</html>
