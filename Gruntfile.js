@@ -33,8 +33,8 @@ module.exports = function (grunt) {
             },
             all: {
                 src: [
-                    'src/Domevents.st', // list all sources in dependency order
-                    'src/Domevents-Tests.st' // list all tests in dependency order
+                    'src/DOMEvents.st', // list all sources in dependency order
+                    'src/DOMEvents-Tests.st' // list all tests in dependency order
                 ],
                 amd_namespace: 'domevents',
                 libraries: ['SUnit', 'Web']
@@ -43,9 +43,9 @@ module.exports = function (grunt) {
                 src: ['node_modules/amber-dev/lib/Test.st'],
                 libraries: [
                     /* add dependencies packages here */
-                    'Domevents', /* add other code-to-test packages here */
+                    'DOMEvents', /* add other code-to-test packages here */
                     'SUnit',
-                    'Domevents-Tests' /* add other test packages here */
+                    'DOMEvents-Tests' /* add other test packages here */
                 ],
                 main_class: 'NodeTestRunner',
                 output_name: 'test_runner'

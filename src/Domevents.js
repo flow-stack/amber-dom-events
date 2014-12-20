@@ -1,121 +1,10 @@
-define("amber-domevents/Domevents", ["amber/boot", "amber_core/Kernel-Objects"], function($boot){
+define("domevents/DOMEvents", ["amber/boot", "amber_core/Kernel-Objects"], function($boot){
 var $core=$boot.api,nil=$boot.nil,$recv=$boot.asReceiver,$globals=$boot.globals;
 var smalltalk=$core,_st=$recv,globals=$globals;
-$core.addPackage('Domevents');
-$core.packages["Domevents"].transport = {"type":"amd","amdNamespace":"amber-domevents"};
+$core.addPackage('DOMEvents');
+$core.packages["DOMEvents"].transport = {"type":"amd","amdNamespace":"domevents"};
 
-$core.addClass('Domevents', $globals.Object, [], 'Domevents');
-$core.addMethod(
-$core.method({
-selector: "augmentPage",
-protocol: 'starting',
-fn: function (){
-var self=this;
-//>>excludeStart("ctx", pragmas.excludeDebugContexts);
-return $core.withContext(function($ctx1) { 
-//>>excludeEnd("ctx");
-var $1;
-$1="#amber-with"._asJQuery();
-//>>excludeStart("ctx", pragmas.excludeDebugContexts);
-$ctx1.sendIdx["asJQuery"]=1;
-//>>excludeEnd("ctx");
-$recv($1)._click_((function(){
-//>>excludeStart("ctx", pragmas.excludeDebugContexts);
-return $core.withContext(function($ctx2) {
-//>>excludeEnd("ctx");
-return self._doAmberWith();
-//>>excludeStart("ctx", pragmas.excludeDebugContexts);
-}, function($ctx2) {$ctx2.fillBlock({},$ctx1,1)});
-//>>excludeEnd("ctx");
-}));
-//>>excludeStart("ctx", pragmas.excludeDebugContexts);
-$ctx1.sendIdx["click:"]=1;
-//>>excludeEnd("ctx");
-$recv("#jquery-append"._asJQuery())._click_((function(){
-//>>excludeStart("ctx", pragmas.excludeDebugContexts);
-return $core.withContext(function($ctx2) {
-//>>excludeEnd("ctx");
-return self._doJQueryAppend();
-//>>excludeStart("ctx", pragmas.excludeDebugContexts);
-}, function($ctx2) {$ctx2.fillBlock({},$ctx1,2)});
-//>>excludeEnd("ctx");
-}));
-return self;
-//>>excludeStart("ctx", pragmas.excludeDebugContexts);
-}, function($ctx1) {$ctx1.fill(self,"augmentPage",{},$globals.Domevents)});
-//>>excludeEnd("ctx");
-},
-//>>excludeStart("ide", pragmas.excludeIdeData);
-args: [],
-source: "augmentPage\x0a\x09'#amber-with' asJQuery click: [ self doAmberWith ].\x0a\x09'#jquery-append' asJQuery click: [ self doJQueryAppend ]",
-referencedClasses: [],
-//>>excludeEnd("ide");
-messageSends: ["click:", "asJQuery", "doAmberWith", "doJQueryAppend"]
-}),
-$globals.Domevents);
-
-$core.addMethod(
-$core.method({
-selector: "doAmberWith",
-protocol: 'action',
-fn: function (){
-var self=this;
-var tag;
-function $HTMLCanvas(){return $globals.HTMLCanvas||(typeof HTMLCanvas=="undefined"?nil:HTMLCanvas)}
-//>>excludeStart("ctx", pragmas.excludeDebugContexts);
-return $core.withContext(function($ctx1) { 
-//>>excludeEnd("ctx");
-tag=$recv($recv($HTMLCanvas())._onJQuery_("#output-list"._asJQuery()))._root();
-$recv(tag)._with_((function(html){
-//>>excludeStart("ctx", pragmas.excludeDebugContexts);
-return $core.withContext(function($ctx2) {
-//>>excludeEnd("ctx");
-return $recv($recv(html)._li())._with_("Amber Web #with: added me!");
-//>>excludeStart("ctx", pragmas.excludeDebugContexts);
-}, function($ctx2) {$ctx2.fillBlock({html:html},$ctx1,1)});
-//>>excludeEnd("ctx");
-}));
-//>>excludeStart("ctx", pragmas.excludeDebugContexts);
-$ctx1.sendIdx["with:"]=1;
-//>>excludeEnd("ctx");
-return self;
-//>>excludeStart("ctx", pragmas.excludeDebugContexts);
-}, function($ctx1) {$ctx1.fill(self,"doAmberWith",{tag:tag},$globals.Domevents)});
-//>>excludeEnd("ctx");
-},
-//>>excludeStart("ide", pragmas.excludeIdeData);
-args: [],
-source: "doAmberWith\x0a\x09| tag |\x0a\x09tag := (HTMLCanvas onJQuery: '#output-list' asJQuery) root.\x0a\x09tag with: [ :html | html li with: 'Amber Web #with: added me!' ]",
-referencedClasses: ["HTMLCanvas"],
-//>>excludeEnd("ide");
-messageSends: ["root", "onJQuery:", "asJQuery", "with:", "li"]
-}),
-$globals.Domevents);
-
-$core.addMethod(
-$core.method({
-selector: "doJQueryAppend",
-protocol: 'action',
-fn: function (){
-var self=this;
-//>>excludeStart("ctx", pragmas.excludeDebugContexts);
-return $core.withContext(function($ctx1) { 
-//>>excludeEnd("ctx");
-$recv("#output-list"._asJQuery())._append_("<li>jQuery append added me!</li>");
-return self;
-//>>excludeStart("ctx", pragmas.excludeDebugContexts);
-}, function($ctx1) {$ctx1.fill(self,"doJQueryAppend",{},$globals.Domevents)});
-//>>excludeEnd("ctx");
-},
-//>>excludeStart("ide", pragmas.excludeIdeData);
-args: [],
-source: "doJQueryAppend\x0a\x09'#output-list' asJQuery append: '<li>jQuery append added me!</li>'",
-referencedClasses: [],
-//>>excludeEnd("ide");
-messageSends: ["append:", "asJQuery"]
-}),
-$globals.Domevents);
-
+$core.addClass('DOMEvents', $globals.Object, [], 'DOMEvents');
 
 $core.addMethod(
 $core.method({
@@ -123,22 +12,143 @@ selector: "start",
 protocol: 'starting',
 fn: function (){
 var self=this;
-//>>excludeStart("ctx", pragmas.excludeDebugContexts);
-return $core.withContext(function($ctx1) { 
-//>>excludeEnd("ctx");
-$recv(self._new())._augmentPage();
 return self;
-//>>excludeStart("ctx", pragmas.excludeDebugContexts);
-}, function($ctx1) {$ctx1.fill(self,"start",{},$globals.Domevents.klass)});
-//>>excludeEnd("ctx");
+
 },
 //>>excludeStart("ide", pragmas.excludeIdeData);
 args: [],
-source: "start\x0a\x09self new augmentPage",
+source: "start\x0a\x0a\x09",
 referencedClasses: [],
 //>>excludeEnd("ide");
-messageSends: ["augmentPage", "new"]
+messageSends: []
 }),
-$globals.Domevents.klass);
+$globals.DOMEvents.klass);
+
+$core.addMethod(
+$core.method({
+selector: "trigger:",
+protocol: '*DOMEvents',
+fn: function (anEventName){
+var self=this;
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+return $core.withContext(function($ctx1) { 
+//>>excludeEnd("ctx");
+return $(self).trigger(anEventName);
+return self;
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+}, function($ctx1) {$ctx1.fill(self,"trigger:",{anEventName:anEventName},$globals.Object)});
+//>>excludeEnd("ctx");
+},
+//>>excludeStart("ide", pragmas.excludeIdeData);
+args: ["anEventName"],
+source: "trigger: anEventName \x0a\x09\x22Triggers anEventName from this instance (no arguments).\x0a\x09For example:  self trigger: #changed.\x22\x0a\x09\x0a\x09<return $(self).trigger(anEventName)>",
+referencedClasses: [],
+//>>excludeEnd("ide");
+messageSends: []
+}),
+$globals.Object);
+
+$core.addMethod(
+$core.method({
+selector: "trigger:with:",
+protocol: '*DOMEvents',
+fn: function (anEventName,anArgument){
+var self=this;
+function $Array(){return $globals.Array||(typeof Array=="undefined"?nil:Array)}
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+return $core.withContext(function($ctx1) { 
+//>>excludeEnd("ctx");
+var $1;
+$1=self._trigger_withAll_(anEventName,$recv($Array())._with_(anArgument));
+return $1;
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+}, function($ctx1) {$ctx1.fill(self,"trigger:with:",{anEventName:anEventName,anArgument:anArgument},$globals.Object)});
+//>>excludeEnd("ctx");
+},
+//>>excludeStart("ide", pragmas.excludeIdeData);
+args: ["anEventName", "anArgument"],
+source: "trigger: anEventName with: anArgument\x0a\x09\x22Triggers anEventName, from this instance eventually using anArgument in the reacting callbacks.\x22\x0a\x09\x0a\x09^ self trigger: anEventName withAll: (Array with: anArgument)",
+referencedClasses: ["Array"],
+//>>excludeEnd("ide");
+messageSends: ["trigger:withAll:", "with:"]
+}),
+$globals.Object);
+
+$core.addMethod(
+$core.method({
+selector: "trigger:with:with:",
+protocol: '*DOMEvents',
+fn: function (anEventName,firstArgument,secondArgument){
+var self=this;
+function $Array(){return $globals.Array||(typeof Array=="undefined"?nil:Array)}
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+return $core.withContext(function($ctx1) { 
+//>>excludeEnd("ctx");
+var $1;
+$1=self._trigger_withAll_(anEventName,$recv($Array())._with_with_(firstArgument,secondArgument));
+return $1;
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+}, function($ctx1) {$ctx1.fill(self,"trigger:with:with:",{anEventName:anEventName,firstArgument:firstArgument,secondArgument:secondArgument},$globals.Object)});
+//>>excludeEnd("ctx");
+},
+//>>excludeStart("ide", pragmas.excludeIdeData);
+args: ["anEventName", "firstArgument", "secondArgument"],
+source: "trigger: anEventName with: firstArgument with: secondArgument\x0a\x09\x22Triggers anEventName from this instance using those two given arugments\x22\x0a\x09\x0a\x09^ self \x0a\x09\x09trigger: anEventName \x0a\x09\x09withAll: (Array \x0a\x09\x09\x09\x09\x09with: firstArgument\x0a\x09\x09\x09\x09\x09with: secondArgument)",
+referencedClasses: ["Array"],
+//>>excludeEnd("ide");
+messageSends: ["trigger:withAll:", "with:with:"]
+}),
+$globals.Object);
+
+$core.addMethod(
+$core.method({
+selector: "trigger:withAll:",
+protocol: '*DOMEvents',
+fn: function (anEventName,someArguments){
+var self=this;
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+return $core.withContext(function($ctx1) { 
+//>>excludeEnd("ctx");
+return $(self).trigger( anEventName, someArguments );
+return self;
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+}, function($ctx1) {$ctx1.fill(self,"trigger:withAll:",{anEventName:anEventName,someArguments:someArguments},$globals.Object)});
+//>>excludeEnd("ctx");
+},
+//>>excludeStart("ide", pragmas.excludeIdeData);
+args: ["anEventName", "someArguments"],
+source: "trigger: anEventName withAll: someArguments\x0a\x09\x22Triggers anEventName from this instance using all the given arugments\x22\x0a\x0a\x09<return $(self).trigger( anEventName, someArguments )>",
+referencedClasses: [],
+//>>excludeEnd("ide");
+messageSends: []
+}),
+$globals.Object);
+
+$core.addMethod(
+$core.method({
+selector: "when:do:",
+protocol: '*DOMEvents',
+fn: function (anEventName,aReactionBlock){
+var self=this;
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+return $core.withContext(function($ctx1) { 
+//>>excludeEnd("ctx");
+$(self).on(anEventName, function(e){
+		var someArguments = $(arguments).slice();
+		someArguments.splice(0,1);
+		aReactionBlock.apply(null, someArguments)});
+return self;
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+}, function($ctx1) {$ctx1.fill(self,"when:do:",{anEventName:anEventName,aReactionBlock:aReactionBlock},$globals.Object)});
+//>>excludeEnd("ctx");
+},
+//>>excludeStart("ide", pragmas.excludeIdeData);
+args: ["anEventName", "aReactionBlock"],
+source: "when: anEventName do: aReactionBlock\x0a\x09\x22Wires the observation of this instance to react to the eventual occurrence of anEventName.\x0a\x09When (and if) anEventName happens, aReactionBlock will take place. \x0a\x09Based on this feature: http://forum.jquery.com/topic/triggering-custom-events-on-js-objects\x0a\x09Note that some objects wont fire (anArray for example).\x22\x0a\x0a\x09<$(self).on(anEventName, function(e){\x0a\x09\x09var someArguments = $(arguments).slice();\x0a\x09\x09someArguments.splice(0,1);\x0a\x09\x09aReactionBlock.apply(null, someArguments)})>",
+referencedClasses: [],
+//>>excludeEnd("ide");
+messageSends: []
+}),
+$globals.Object);
 
 });

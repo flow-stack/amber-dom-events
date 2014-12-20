@@ -1,30 +1,53 @@
-Smalltalk createPackage: 'Domevents'!
-Object subclass: #Domevents
+Smalltalk createPackage: 'DOMEvents'!
+Object subclass: #DOMEvents
 	instanceVariableNames: ''
-	package: 'Domevents'!
+	package: 'DOMEvents'!
 
-!Domevents methodsFor: 'action'!
-
-doAmberWith
-	| tag |
-	tag := (HTMLCanvas onJQuery: '#output-list' asJQuery) root.
-	tag with: [ :html | html li with: 'Amber Web #with: added me!!' ]
-!
-
-doJQueryAppend
-	'#output-list' asJQuery append: '<li>jQuery append added me!!</li>'
-! !
-
-!Domevents methodsFor: 'starting'!
-
-augmentPage
-	'#amber-with' asJQuery click: [ self doAmberWith ].
-	'#jquery-append' asJQuery click: [ self doJQueryAppend ]
-! !
-
-!Domevents class methodsFor: 'starting'!
+!DOMEvents class methodsFor: 'starting'!
 
 start
-	self new augmentPage
+! !
+
+!Object methodsFor: '*DOMEvents'!
+
+trigger: anEventName 
+	"Triggers anEventName from this instance (no arguments).
+	For example:  self trigger: #changed."
+	
+	<return $(self).trigger(anEventName)>
+!
+
+trigger: anEventName with: anArgument
+	"Triggers anEventName, from this instance eventually using anArgument in the reacting callbacks."
+	
+	^ self trigger: anEventName withAll: (Array with: anArgument)
+!
+
+trigger: anEventName with: firstArgument with: secondArgument
+	"Triggers anEventName from this instance using those two given arugments"
+	
+	^ self 
+		trigger: anEventName 
+		withAll: (Array 
+					with: firstArgument
+					with: secondArgument)
+!
+
+trigger: anEventName withAll: someArguments
+	"Triggers anEventName from this instance using all the given arugments"
+
+	<return $(self).trigger( anEventName, someArguments )>
+!
+
+when: anEventName do: aReactionBlock
+	"Wires the observation of this instance to react to the eventual occurrence of anEventName.
+	When (and if) anEventName happens, aReactionBlock will take place. 
+	Based on this feature: http://forum.jquery.com/topic/triggering-custom-events-on-js-objects
+	Note that some objects wont fire (anArray for example)."
+
+	<$(self).on(anEventName, function(e){
+		var someArguments = $(arguments).slice();
+		someArguments.splice(0,1);
+		aReactionBlock.apply(null, someArguments)})>
 ! !
 
