@@ -6,7 +6,6 @@ Object subclass: #DOMEvents
 !DOMEvents class methodsFor: 'starting'!
 
 start
-	self new augmentPage
 ! !
 
 !Object methodsFor: '*DOMEvents'!

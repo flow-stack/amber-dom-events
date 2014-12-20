@@ -12,21 +12,15 @@ selector: "start",
 protocol: 'starting',
 fn: function (){
 var self=this;
-//>>excludeStart("ctx", pragmas.excludeDebugContexts);
-return $core.withContext(function($ctx1) { 
-//>>excludeEnd("ctx");
-$recv(self._new())._augmentPage();
 return self;
-//>>excludeStart("ctx", pragmas.excludeDebugContexts);
-}, function($ctx1) {$ctx1.fill(self,"start",{},$globals.DOMEvents.klass)});
-//>>excludeEnd("ctx");
+
 },
 //>>excludeStart("ide", pragmas.excludeIdeData);
 args: [],
-source: "start\x0a\x09self new augmentPage",
+source: "start\x0a\x0a\x09",
 referencedClasses: [],
 //>>excludeEnd("ide");
-messageSends: ["augmentPage", "new"]
+messageSends: []
 }),
 $globals.DOMEvents.klass);
 

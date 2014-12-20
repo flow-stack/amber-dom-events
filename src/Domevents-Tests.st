@@ -36,18 +36,20 @@ testCustomEventWithOneArgument
 
 testCustomEventWithTenArguments
 
-	| observed things |
+	| observed things all |
 
 	observed := Dictionary new.
 	things := (1 to: 10) collect: [ :i | Browser new ].
 	
 	observed when: #something: do:[ :a1 :a2 :a3 :a4 :a5 :a6 :a7 :a8 : a9 :a10 | 
+		all := #{}.
+		thisContext locals addObjectVariablesTo: all.
 		observed 
 			at: #something: 
-			put: thisContext locals asHashedCollection values ].
+			put: all values ].
 	
 	observed trigger: #something: withAll: things.
-	
+
 	self assert: (observed includesKey: #something:).	
 
 	(observed at: #something:) do: [ :thing |

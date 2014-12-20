@@ -98,7 +98,7 @@ selector: "testCustomEventWithTenArguments",
 protocol: 'tests',
 fn: function (){
 var self=this;
-var observed,things;
+var observed,things,all;
 function $Dictionary(){return $globals.Dictionary||(typeof Dictionary=="undefined"?nil:Dictionary)}
 function $Browser(){return $globals.Browser||(typeof Browser=="undefined"?nil:Browser)}
 //>>excludeStart("ctx", pragmas.excludeDebugContexts);
@@ -122,7 +122,10 @@ $recv(observed)._when_do_("something:",(function(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10)
 //>>excludeStart("ctx", pragmas.excludeDebugContexts);
 return $core.withContext(function($ctx2) {
 //>>excludeEnd("ctx");
-return $recv(observed)._at_put_("something:",$recv($recv($core.getThisContext()._locals())._asHashedCollection())._values());
+all=$globals.HashedCollection._newFromPairs_([]);
+all;
+$recv($core.getThisContext()._locals())._addObjectVariablesTo_(all);
+return $recv(observed)._at_put_("something:",$recv(all)._values());
 //>>excludeStart("ctx", pragmas.excludeDebugContexts);
 }, function($ctx2) {$ctx2.fillBlock({a1:a1,a2:a2,a3:a3,a4:a4,a5:a5,a6:a6,a7:a7,a8:a8,a9:a9,a10:a10},$ctx1,2)});
 //>>excludeEnd("ctx");
@@ -151,15 +154,15 @@ $ctx2.sendIdx["assert:"]=2;
 self._assert_($recv($recv(observed)._at_("something:")).__eq(things));
 return self;
 //>>excludeStart("ctx", pragmas.excludeDebugContexts);
-}, function($ctx1) {$ctx1.fill(self,"testCustomEventWithTenArguments",{observed:observed,things:things},$globals.DOMEventsTest)});
+}, function($ctx1) {$ctx1.fill(self,"testCustomEventWithTenArguments",{observed:observed,things:things,all:all},$globals.DOMEventsTest)});
 //>>excludeEnd("ctx");
 },
 //>>excludeStart("ide", pragmas.excludeIdeData);
 args: [],
-source: "testCustomEventWithTenArguments\x0a\x0a\x09| observed things |\x0a\x0a\x09observed := Dictionary new.\x0a\x09things := (1 to: 10) collect: [ :i | Browser new ].\x0a\x09\x0a\x09observed when: #something: do:[ :a1 :a2 :a3 :a4 :a5 :a6 :a7 :a8 : a9 :a10 | \x0a\x09\x09observed \x0a\x09\x09\x09at: #something: \x0a\x09\x09\x09put: thisContext locals asHashedCollection values ].\x0a\x09\x0a\x09observed trigger: #something: withAll: things.\x0a\x09\x0a\x09self assert: (observed includesKey: #something:).\x09\x0a\x0a\x09(observed at: #something:) do: [ :thing |\x0a\x09\x09self assert: (things includes: thing) ].\x0a\x09\x0a\x09self assert: (observed at: #something:) = things",
+source: "testCustomEventWithTenArguments\x0a\x0a\x09| observed things all |\x0a\x0a\x09observed := Dictionary new.\x0a\x09things := (1 to: 10) collect: [ :i | Browser new ].\x0a\x09\x0a\x09observed when: #something: do:[ :a1 :a2 :a3 :a4 :a5 :a6 :a7 :a8 : a9 :a10 | \x0a\x09\x09all := #{}.\x0a\x09\x09thisContext locals addObjectVariablesTo: all.\x0a\x09\x09observed \x0a\x09\x09\x09at: #something: \x0a\x09\x09\x09put: all values ].\x0a\x09\x0a\x09observed trigger: #something: withAll: things.\x0a\x0a\x09self assert: (observed includesKey: #something:).\x09\x0a\x0a\x09(observed at: #something:) do: [ :thing |\x0a\x09\x09self assert: (things includes: thing) ].\x0a\x09\x0a\x09self assert: (observed at: #something:) = things",
 referencedClasses: ["Dictionary", "Browser"],
 //>>excludeEnd("ide");
-messageSends: ["new", "collect:", "to:", "when:do:", "at:put:", "values", "asHashedCollection", "locals", "trigger:withAll:", "assert:", "includesKey:", "do:", "at:", "includes:", "="]
+messageSends: ["new", "collect:", "to:", "when:do:", "addObjectVariablesTo:", "locals", "at:put:", "values", "trigger:withAll:", "assert:", "includesKey:", "do:", "at:", "includes:", "="]
 }),
 $globals.DOMEventsTest);
 
