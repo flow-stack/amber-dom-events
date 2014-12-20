@@ -232,5 +232,70 @@ messageSends: ["new", "when:do:", "at:put:", "with:with:", "trigger:with:with:",
 }),
 $globals.DOMEventsTest);
 
+$core.addMethod(
+$core.method({
+selector: "testUnobserveCustomEvent",
+protocol: 'tests',
+fn: function (){
+var self=this;
+var observed;
+function $Dictionary(){return $globals.Dictionary||(typeof Dictionary=="undefined"?nil:Dictionary)}
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+return $core.withContext(function($ctx1) { 
+//>>excludeEnd("ctx");
+var $1,$2;
+observed=$recv($Dictionary())._new();
+$recv(observed)._when_do_("something",(function(){
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+return $core.withContext(function($ctx2) {
+//>>excludeEnd("ctx");
+return $recv(observed)._at_put_("something","happen");
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+}, function($ctx2) {$ctx2.fillBlock({},$ctx1,1)});
+//>>excludeEnd("ctx");
+}));
+$recv(observed)._trigger_("something");
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+$ctx1.sendIdx["trigger:"]=1;
+//>>excludeEnd("ctx");
+$1=$recv(observed)._includesKey_("something");
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+$ctx1.sendIdx["includesKey:"]=1;
+//>>excludeEnd("ctx");
+self._assert_($1);
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+$ctx1.sendIdx["assert:"]=1;
+//>>excludeEnd("ctx");
+self._assert_($recv($recv(observed)._at_("something")).__eq("happen"));
+$recv(observed)._removeKey_("something");
+$recv(observed)._trigger_("whatever");
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+$ctx1.sendIdx["trigger:"]=2;
+//>>excludeEnd("ctx");
+$2=$recv(observed)._includesKey_("something");
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+$ctx1.sendIdx["includesKey:"]=2;
+//>>excludeEnd("ctx");
+self._deny_($2);
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+$ctx1.sendIdx["deny:"]=1;
+//>>excludeEnd("ctx");
+$recv(observed)._off_("something");
+$recv(observed)._trigger_("something");
+self._deny_($recv(observed)._includesKey_("something"));
+return self;
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+}, function($ctx1) {$ctx1.fill(self,"testUnobserveCustomEvent",{observed:observed},$globals.DOMEventsTest)});
+//>>excludeEnd("ctx");
+},
+//>>excludeStart("ide", pragmas.excludeIdeData);
+args: [],
+source: "testUnobserveCustomEvent\x0a\x0a\x09| observed |\x0a\x0a\x09observed := Dictionary new.\x0a\x09\x0a\x09observed when: #something do:[ observed at: #something put: #happen ].\x0a\x09\x0a\x09observed trigger: #something.\x0a\x09\x0a\x09\x22Assert reaction\x22\x0a\x09self assert: (observed includesKey: #something).\x09\x0a\x09self assert: (observed at: #something) = #happen.\x0a\x09observed removeKey: #something.\x0a\x0a\x09\x22Assert nonchalance when triggering somethign different\x22\x0a\x09observed trigger: #whatever.\x0a\x09self deny: (observed includesKey: #something).\x09\x0a\x0a\x09\x22Assert nonchalance after unobserving\x22\x0a\x09observed off: #something.\x0a\x09observed trigger: #something.\x0a\x09self deny: (observed includesKey: #something).\x09\x0a\x09\x0a\x09\x0a\x09",
+referencedClasses: ["Dictionary"],
+//>>excludeEnd("ide");
+messageSends: ["new", "when:do:", "at:put:", "trigger:", "assert:", "includesKey:", "=", "at:", "removeKey:", "deny:", "off:"]
+}),
+$globals.DOMEventsTest);
+
 
 });

@@ -10,6 +10,20 @@ start
 
 !Object methodsFor: '*DOMEvents'!
 
+off
+	"Unwires the observation of this instance to the occurrence of all events.
+	All handlers will stop reacting"
+
+	<$(self).off()>
+!
+
+off: anEventName 
+	"Unwires the observation of this instance from the occurrence of anEventName.
+	All handlers for it will stop reacting"
+
+	<$(self).off(anEventName)>
+!
+
 trigger: anEventName 
 	"Triggers anEventName from this instance (no arguments).
 	For example:  self trigger: #changed."

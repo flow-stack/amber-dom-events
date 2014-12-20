@@ -26,6 +26,54 @@ $globals.DOMEvents.klass);
 
 $core.addMethod(
 $core.method({
+selector: "off",
+protocol: '*DOMEvents',
+fn: function (){
+var self=this;
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+return $core.withContext(function($ctx1) { 
+//>>excludeEnd("ctx");
+$(self).off();
+return self;
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+}, function($ctx1) {$ctx1.fill(self,"off",{},$globals.Object)});
+//>>excludeEnd("ctx");
+},
+//>>excludeStart("ide", pragmas.excludeIdeData);
+args: [],
+source: "off\x0a\x09\x22Unwires the observation of this instance to the occurrence of all events.\x0a\x09All handlers will stop reacting\x22\x0a\x0a\x09<$(self).off()>",
+referencedClasses: [],
+//>>excludeEnd("ide");
+messageSends: []
+}),
+$globals.Object);
+
+$core.addMethod(
+$core.method({
+selector: "off:",
+protocol: '*DOMEvents',
+fn: function (anEventName){
+var self=this;
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+return $core.withContext(function($ctx1) { 
+//>>excludeEnd("ctx");
+$(self).off(anEventName);
+return self;
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+}, function($ctx1) {$ctx1.fill(self,"off:",{anEventName:anEventName},$globals.Object)});
+//>>excludeEnd("ctx");
+},
+//>>excludeStart("ide", pragmas.excludeIdeData);
+args: ["anEventName"],
+source: "off: anEventName \x0a\x09\x22Unwires the observation of this instance from the occurrence of anEventName.\x0a\x09All handlers for it will stop reacting\x22\x0a\x0a\x09<$(self).off(anEventName)>",
+referencedClasses: [],
+//>>excludeEnd("ide");
+messageSends: []
+}),
+$globals.Object);
+
+$core.addMethod(
+$core.method({
 selector: "trigger:",
 protocol: '*DOMEvents',
 fn: function (anEventName){
