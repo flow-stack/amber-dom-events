@@ -73,5 +73,30 @@ testCustomEventWithTwoArgument
 	self assert: (observed includesKey: #something:).	
 	self assert: (observed at: #something:) first == thing.
 	self assert: (observed at: #something:) second == stuff.
+!
+
+testUnobserveCustomEvent
+
+	| observed |
+
+	observed := Dictionary new.
+	
+	observed when: #something do:[ observed at: #something put: #happen ].
+	
+	observed trigger: #something.
+	
+	"Assert reaction"
+	self assert: (observed includesKey: #something).	
+	self assert: (observed at: #something) = #happen.
+	observed removeKey: #something.
+
+	"Assert nonchalance when triggering somethign different"
+	observed trigger: #whatever.
+	self deny: (observed includesKey: #something).	
+
+	"Assert nonchalance after unobserving"
+	observed off: #something.
+	observed trigger: #something.
+	self deny: (observed includesKey: #something).
 ! !
 
