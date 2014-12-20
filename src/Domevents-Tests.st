@@ -1,5 +1,5 @@
-Smalltalk createPackage: 'Domevents-Tests'!
-TestCase subclass: #DomeventsTest
+Smalltalk createPackage: 'DOMEvents-Tests'!
+TestCase subclass: #DOMEventsTest
 	instanceVariableNames: ''
-	package: 'Domevents-Tests'!
+	package: 'DOMEvents-Tests'!
 
