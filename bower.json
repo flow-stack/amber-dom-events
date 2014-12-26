@@ -1,7 +1,7 @@
 {
     "name": "domevents",
     "description": "Amber DOM events allows any Amber object to observe and trigger custom events.",
-    "version": "0.1.0",
+    "version": "0.1.2",
     "ignore": [
         "**/.*",
         "node_modules",
