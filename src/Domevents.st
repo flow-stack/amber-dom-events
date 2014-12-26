@@ -10,25 +10,30 @@ start
 
 !Object methodsFor: '*DOMEvents'!
 
+asJQuery
+	
+	^ jQuery value: self
+!
+
 off
 	"Unwires the observation of this instance to the occurrence of all events.
 	All handlers will stop reacting"
 
-	<$(self).off()>
+	self asJQuery off
 !
 
 off: anEventName 
 	"Unwires the observation of this instance from the occurrence of anEventName.
 	All handlers for it will stop reacting"
 
-	<$(self).off(anEventName)>
+	self asJQuery off: anEventName
 !
 
 trigger: anEventName 
 	"Triggers anEventName from this instance (no arguments).
 	For example:  self trigger: #changed."
 	
-	<return $(self).trigger(anEventName)>
+	^ self asJQuery trigger: anEventName
 !
 
 trigger: anEventName with: anArgument
@@ -50,7 +55,7 @@ trigger: anEventName with: firstArgument with: secondArgument
 trigger: anEventName withAll: someArguments
 	"Triggers anEventName from this instance using all the given arugments"
 
-	<return $(self).trigger( anEventName, someArguments )>
+	^ self asJQuery trigger: anEventName with: someArguments
 !
 
 when: anEventName do: aReactionBlock
@@ -59,8 +64,8 @@ when: anEventName do: aReactionBlock
 	Based on this feature: http://forum.jquery.com/topic/triggering-custom-events-on-js-objects
 	Note that some objects wont fire (anArray for example)."
 
-	<$(self).on(anEventName, function(e){
-		var someArguments = $(arguments).slice();
+	<jQuery(self).on(anEventName, function(e){
+		var someArguments = jQuery(arguments).slice();
 		someArguments.splice(0,1);
 		aReactionBlock.apply(null, someArguments)})>
 ! !
