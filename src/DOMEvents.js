@@ -31,7 +31,7 @@ protocol: '*DOMEvents',
 fn: function (){
 var self=this;
 //>>excludeStart("ctx", pragmas.excludeDebugContexts);
-return $core.withContext(function($ctx1) { 
+return $core.withContext(function($ctx1) {
 //>>excludeEnd("ctx");
 var $1;
 $1=$recv(jQuery)._value_(self);
@@ -56,7 +56,7 @@ protocol: '*DOMEvents',
 fn: function (){
 var self=this;
 //>>excludeStart("ctx", pragmas.excludeDebugContexts);
-return $core.withContext(function($ctx1) { 
+return $core.withContext(function($ctx1) {
 //>>excludeEnd("ctx");
 $recv(self._asJQuery())._off();
 return self;
@@ -80,7 +80,7 @@ protocol: '*DOMEvents',
 fn: function (anEventName){
 var self=this;
 //>>excludeStart("ctx", pragmas.excludeDebugContexts);
-return $core.withContext(function($ctx1) { 
+return $core.withContext(function($ctx1) {
 //>>excludeEnd("ctx");
 $recv(self._asJQuery())._off_(anEventName);
 return self;
@@ -104,7 +104,7 @@ protocol: '*DOMEvents',
 fn: function (anEventName){
 var self=this;
 //>>excludeStart("ctx", pragmas.excludeDebugContexts);
-return $core.withContext(function($ctx1) { 
+return $core.withContext(function($ctx1) {
 //>>excludeEnd("ctx");
 var $1;
 $1=$recv(self._asJQuery())._trigger_(anEventName);
@@ -130,7 +130,7 @@ fn: function (anEventName,anArgument){
 var self=this;
 function $Array(){return $globals.Array||(typeof Array=="undefined"?nil:Array)}
 //>>excludeStart("ctx", pragmas.excludeDebugContexts);
-return $core.withContext(function($ctx1) { 
+return $core.withContext(function($ctx1) {
 //>>excludeEnd("ctx");
 var $1;
 $1=self._trigger_withAll_(anEventName,$recv($Array())._with_(anArgument));
@@ -156,7 +156,7 @@ fn: function (anEventName,firstArgument,secondArgument){
 var self=this;
 function $Array(){return $globals.Array||(typeof Array=="undefined"?nil:Array)}
 //>>excludeStart("ctx", pragmas.excludeDebugContexts);
-return $core.withContext(function($ctx1) { 
+return $core.withContext(function($ctx1) {
 //>>excludeEnd("ctx");
 var $1;
 $1=self._trigger_withAll_(anEventName,$recv($Array())._with_with_(firstArgument,secondArgument));
@@ -181,7 +181,7 @@ protocol: '*DOMEvents',
 fn: function (anEventName,someArguments){
 var self=this;
 //>>excludeStart("ctx", pragmas.excludeDebugContexts);
-return $core.withContext(function($ctx1) { 
+return $core.withContext(function($ctx1) {
 //>>excludeEnd("ctx");
 var $1;
 $1=$recv(self._asJQuery())._trigger_with_(anEventName,someArguments);
@@ -206,7 +206,7 @@ protocol: '*DOMEvents',
 fn: function (anEventName,aReactionBlock){
 var self=this;
 //>>excludeStart("ctx", pragmas.excludeDebugContexts);
-return $core.withContext(function($ctx1) { 
+return $core.withContext(function($ctx1) {
 //>>excludeEnd("ctx");
 jQuery(self).on(anEventName, function(e){
 		var someArguments = jQuery(arguments).slice();

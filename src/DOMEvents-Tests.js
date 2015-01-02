@@ -14,7 +14,7 @@ var self=this;
 var observed;
 function $Dictionary(){return $globals.Dictionary||(typeof Dictionary=="undefined"?nil:Dictionary)}
 //>>excludeStart("ctx", pragmas.excludeDebugContexts);
-return $core.withContext(function($ctx1) { 
+return $core.withContext(function($ctx1) {
 //>>excludeEnd("ctx");
 observed=$recv($Dictionary())._new();
 $recv(observed)._when_do_("something",(function(){
@@ -56,7 +56,7 @@ var observed,thing;
 function $Dictionary(){return $globals.Dictionary||(typeof Dictionary=="undefined"?nil:Dictionary)}
 function $TestCase(){return $globals.TestCase||(typeof TestCase=="undefined"?nil:TestCase)}
 //>>excludeStart("ctx", pragmas.excludeDebugContexts);
-return $core.withContext(function($ctx1) { 
+return $core.withContext(function($ctx1) {
 //>>excludeEnd("ctx");
 observed=$recv($Dictionary())._new();
 //>>excludeStart("ctx", pragmas.excludeDebugContexts);
@@ -102,7 +102,7 @@ var observed,things,all;
 function $Dictionary(){return $globals.Dictionary||(typeof Dictionary=="undefined"?nil:Dictionary)}
 function $Browser(){return $globals.Browser||(typeof Browser=="undefined"?nil:Browser)}
 //>>excludeStart("ctx", pragmas.excludeDebugContexts);
-return $core.withContext(function($ctx1) { 
+return $core.withContext(function($ctx1) {
 //>>excludeEnd("ctx");
 var $1;
 observed=$recv($Dictionary())._new();
@@ -178,7 +178,7 @@ function $TestCase(){return $globals.TestCase||(typeof TestCase=="undefined"?nil
 function $Counter(){return $globals.Counter||(typeof Counter=="undefined"?nil:Counter)}
 function $Array(){return $globals.Array||(typeof Array=="undefined"?nil:Array)}
 //>>excludeStart("ctx", pragmas.excludeDebugContexts);
-return $core.withContext(function($ctx1) { 
+return $core.withContext(function($ctx1) {
 //>>excludeEnd("ctx");
 var $3,$2,$1;
 observed=$recv($Dictionary())._new();
@@ -241,7 +241,7 @@ var self=this;
 var observed;
 function $Dictionary(){return $globals.Dictionary||(typeof Dictionary=="undefined"?nil:Dictionary)}
 //>>excludeStart("ctx", pragmas.excludeDebugContexts);
-return $core.withContext(function($ctx1) { 
+return $core.withContext(function($ctx1) {
 //>>excludeEnd("ctx");
 var $1,$2;
 observed=$recv($Dictionary())._new();
@@ -290,7 +290,7 @@ return self;
 },
 //>>excludeStart("ide", pragmas.excludeIdeData);
 args: [],
-source: "testUnobserveCustomEvent\x0a\x0a\x09| observed |\x0a\x0a\x09observed := Dictionary new.\x0a\x09\x0a\x09observed when: #something do:[ observed at: #something put: #happen ].\x0a\x09\x0a\x09observed trigger: #something.\x0a\x09\x0a\x09\x22Assert reaction\x22\x0a\x09self assert: (observed includesKey: #something).\x09\x0a\x09self assert: (observed at: #something) = #happen.\x0a\x09observed removeKey: #something.\x0a\x0a\x09\x22Assert nonchalance when triggering somethign different\x22\x0a\x09observed trigger: #whatever.\x0a\x09self deny: (observed includesKey: #something).\x09\x0a\x0a\x09\x22Assert nonchalance after unobserving\x22\x0a\x09observed off: #something.\x0a\x09observed trigger: #something.\x0a\x09self deny: (observed includesKey: #something).\x09\x0a\x09\x0a\x09\x0a\x09",
+source: "testUnobserveCustomEvent\x0a\x0a\x09| observed |\x0a\x0a\x09observed := Dictionary new.\x0a\x09\x0a\x09observed when: #something do:[ observed at: #something put: #happen ].\x0a\x09\x0a\x09observed trigger: #something.\x0a\x09\x0a\x09\x22Assert reaction\x22\x0a\x09self assert: (observed includesKey: #something).\x09\x0a\x09self assert: (observed at: #something) = #happen.\x0a\x09observed removeKey: #something.\x0a\x0a\x09\x22Assert nonchalance when triggering somethign different\x22\x0a\x09observed trigger: #whatever.\x0a\x09self deny: (observed includesKey: #something).\x09\x0a\x0a\x09\x22Assert nonchalance after unobserving\x22\x0a\x09observed off: #something.\x0a\x09observed trigger: #something.\x0a\x09self deny: (observed includesKey: #something).",
 referencedClasses: ["Dictionary"],
 //>>excludeEnd("ide");
 messageSends: ["new", "when:do:", "at:put:", "trigger:", "assert:", "includesKey:", "=", "at:", "removeKey:", "deny:", "off:"]
