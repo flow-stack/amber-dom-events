@@ -1,6 +1,5 @@
 define("domevents/DOMEvents", ["amber/boot", "amber_core/Kernel-Objects"], function($boot){
 var $core=$boot.api,nil=$boot.nil,$recv=$boot.asReceiver,$globals=$boot.globals;
-var smalltalk=$core,_st=$recv,globals=$globals;
 $core.addPackage('DOMEvents');
 $core.packages["DOMEvents"].transport = {"type":"amd","amdNamespace":"domevents"};
 
@@ -23,31 +22,6 @@ referencedClasses: [],
 messageSends: []
 }),
 $globals.DOMEvents.klass);
-
-$core.addMethod(
-$core.method({
-selector: "asJQuery",
-protocol: '*DOMEvents',
-fn: function (){
-var self=this;
-//>>excludeStart("ctx", pragmas.excludeDebugContexts);
-return $core.withContext(function($ctx1) {
-//>>excludeEnd("ctx");
-var $1;
-$1=$recv(jQuery)._value_(self);
-return $1;
-//>>excludeStart("ctx", pragmas.excludeDebugContexts);
-}, function($ctx1) {$ctx1.fill(self,"asJQuery",{},$globals.Object)});
-//>>excludeEnd("ctx");
-},
-//>>excludeStart("ide", pragmas.excludeIdeData);
-args: [],
-source: "asJQuery\x0a\x09\x0a\x09^ jQuery value: self",
-referencedClasses: [],
-//>>excludeEnd("ide");
-messageSends: ["value:"]
-}),
-$globals.Object);
 
 $core.addMethod(
 $core.method({
@@ -219,7 +193,7 @@ return self;
 },
 //>>excludeStart("ide", pragmas.excludeIdeData);
 args: ["anEventName", "aReactionBlock"],
-source: "when: anEventName do: aReactionBlock\x0a\x09\x22Wires the observation of this instance to react to the eventual occurrence of anEventName.\x0a\x09When (and if) anEventName happens, aReactionBlock will take place. \x0a\x09Based on this feature: http://forum.jquery.com/topic/triggering-custom-events-on-js-objects\x0a\x09Note that some objects wont fire (anArray for example).\x22\x0a\x0a\x09<jQuery(self).on(anEventName, function(e){\x0a\x09\x09var someArguments = jQuery(arguments).slice();\x0a\x09\x09someArguments.splice(0,1);\x0a\x09\x09aReactionBlock.apply(null, someArguments)})>",
+source: "when: anEventName do: aReactionBlock\x0a\x09\x22Wires the observation of this instance to react to the eventual occurrence of anEventName.\x0a\x09anEventName is expected to be a keyword aSymbol and aReactionBlock to receive the arguments.\x0a\x09When (and if) anEventName happens, aReactionBlock will take place receiving the arguments sent at trigger time.\x0a\x09Based on this feature: http://forum.jquery.com/topic/triggering-custom-events-on-js-objects\x0a\x09Note that, due to a jQuery limitation, some objects will not trigger events (anArray for example).\x22\x0a\x0a\x09<jQuery(self).on(anEventName, function(e){\x0a\x09\x09var someArguments = jQuery(arguments).slice();\x0a\x09\x09someArguments.splice(0,1);\x0a\x09\x09aReactionBlock.apply(null, someArguments)})>",
 referencedClasses: [],
 //>>excludeEnd("ide");
 messageSends: []

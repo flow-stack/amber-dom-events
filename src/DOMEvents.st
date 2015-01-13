@@ -10,11 +10,6 @@ start
 
 !Object methodsFor: '*DOMEvents'!
 
-asJQuery
-	
-	^ jQuery value: self
-!
-
 off
 	"Unwires the observation of this instance to the occurrence of all events.
 	All handlers will stop reacting"
@@ -60,9 +55,10 @@ trigger: anEventName withAll: someArguments
 
 when: anEventName do: aReactionBlock
 	"Wires the observation of this instance to react to the eventual occurrence of anEventName.
-	When (and if) anEventName happens, aReactionBlock will take place. 
+	anEventName is expected to be a keyword aSymbol and aReactionBlock to receive the arguments.
+	When (and if) anEventName happens, aReactionBlock will take place receiving the arguments sent at trigger time.
 	Based on this feature: http://forum.jquery.com/topic/triggering-custom-events-on-js-objects
-	Note that some objects wont fire (anArray for example)."
+	Note that, due to a jQuery limitation, some objects will not trigger events (anArray for example)."
 
 	<jQuery(self).on(anEventName, function(e){
 		var someArguments = jQuery(arguments).slice();

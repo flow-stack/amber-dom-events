@@ -29,6 +29,7 @@ module.exports = function (grunt) {
             options: {
                 amber_dir: path.join(__dirname, "bower_components", "amber"),
                 library_dirs: ['src'],
+                verbose: true,
                 closure_jar: ''
             },
             all: {
@@ -37,7 +38,7 @@ module.exports = function (grunt) {
                     'src/DOMEvents-Tests.st' // list all tests in dependency order
                 ],
                 amd_namespace: 'domevents',
-                libraries: ['SUnit', 'Web']
+                libraries: []
             },
             test_runner: {
                 src: ['node_modules/amber-dev/lib/Test.st'],

@@ -1,7 +1,7 @@
 {
     "name": "domevents",
     "description": "Amber DOM events allows any Amber object to observe and trigger custom events.",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "ignore": [
         "**/.*",
         "node_modules",
@@ -19,17 +19,17 @@
     "homepage": "https://github.com/flow-stack/amber-dom-events",
     "keywords": [
         "Amber",
-        "Smalltalk"
+        "Smalltalk",
+        "Observer"
     ],
     "license": [
         "MIT"
     ],
     "private": false,
     "dependencies": {
-        "amber": "^0.13.2"
+        "amber": "^0.14.2"
     },
     "devDependencies": {
-        "amber-ide-starter-dialog": "^0.1.0",
         "helios": "^0.3.0"
     }
 }
