@@ -8,49 +8,61 @@ Object subclass: #DOMEvents
 start
 ! !
 
+!BlockClosure methodsFor: '*DOMEvents'!
+
+dropFirstArg
+	"Evaluates this closure using all the arguments except the first one."
+	<self.apply(null,Array.prototype.slice.call(arguments, 1))>
+!
+
+dropFirstArg: someArguments
+	"Evaluates this closure using all the arguments except the first one."
+	^ self valueWithPossibleArguments: someArguments allButFirst
+! !
+
 !Object methodsFor: '*DOMEvents'!
 
-off
+releaseActionMap
 	"Unwires the observation of this instance to the occurrence of all events.
 	All handlers will stop reacting"
 
 	self asJQuery off
 !
 
-off: anEventName 
+removeActionsForEvent: anEventName 
 	"Unwires the observation of this instance from the occurrence of anEventName.
 	All handlers for it will stop reacting"
 
 	self asJQuery off: anEventName
 !
 
-trigger: anEventName 
+triggerEvent: anEventName 
 	"Triggers anEventName from this instance (no arguments).
-	For example:  self trigger: #changed."
+	For example:  self triggerEvent: #changed."
 	
 	^ self asJQuery trigger: anEventName
 !
 
-trigger: anEventName with: anArgument
+triggerEvent: anEventName with: anArgument
 	"Triggers anEventName, from this instance eventually using anArgument in the reacting callbacks."
 	
-	^ self trigger: anEventName withAll: (Array with: anArgument)
+	^ self triggerEvent: anEventName withArguments: (Array with: anArgument)
 !
 
-trigger: anEventName with: firstArgument with: secondArgument
+triggerEvent: anEventName with: firstArgument with: secondArgument
 	"Triggers anEventName from this instance using those two given arugments"
 	
 	^ self 
-		trigger: anEventName 
-		withAll: (Array 
+		triggerEvent: anEventName 
+		withArguments: (Array 
 					with: firstArgument
 					with: secondArgument)
 !
 
-trigger: anEventName withAll: someArguments
+triggerEvent: anEventName withArguments: someArguments
 	"Triggers anEventName from this instance using all the given arugments"
 
-	^ self asJQuery trigger: anEventName with: someArguments
+	self asJQuery trigger: anEventName with: someArguments
 !
 
 when: anEventName do: aReactionBlock
@@ -61,8 +73,6 @@ when: anEventName do: aReactionBlock
 	Note that, due to a jQuery limitation, some objects will not trigger events (anArray for example)."
 
 	<jQuery(self).on(anEventName, function(e){
-		var someArguments = jQuery(arguments).slice();
-		someArguments.splice(0,1);
-		aReactionBlock.apply(null, someArguments)})>
+		aReactionBlock.apply(null, Array.prototype.slice.call(arguments, 1))})>
 ! !
 
