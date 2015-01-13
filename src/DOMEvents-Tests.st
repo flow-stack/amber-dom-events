@@ -13,7 +13,7 @@ testCustomEventWithNoArgument
 	
 	observed when: #something do:[ observed at: #something put: #happen ].
 	
-	observed trigger: #something.
+	observed triggerEvent: #something.
 	
 	self assert: (observed includesKey: #something).	
 	self assert: (observed at: #something) = #happen.
@@ -28,7 +28,7 @@ testCustomEventWithOneArgument
 	
 	observed when: #something: do:[ :argument | observed at: #something: put: argument ].
 	
-	observed trigger: #something: with: thing.
+	observed triggerEvent: #something: with: thing.
 	
 	self assert: (observed includesKey: #something:).	
 	self assert: (observed at: #something:) == thing.
@@ -39,7 +39,7 @@ testCustomEventWithTenArguments
 	| observed things all |
 
 	observed := Dictionary new.
-	things := (1 to: 10) collect: [ :i | Browser new ].
+	things := (1 to: 10) collect: [ :i | #thisAssociation -> i ].
 	
 	observed when: #something: do:[ :a1 :a2 :a3 :a4 :a5 :a6 :a7 :a8 : a9 :a10 | 
 		all := #{}.
@@ -48,7 +48,7 @@ testCustomEventWithTenArguments
 			at: #something: 
 			put: all values ].
 	
-	observed trigger: #something: withAll: things.
+	observed triggerEvent: #something: withArguments: things.
 
 	self assert: (observed includesKey: #something:).	
 
@@ -64,11 +64,11 @@ testCustomEventWithTwoArgument
 
 	observed := Dictionary new.
 	thing := TestCase new.
-	stuff := Counter new.
+	stuff := #this -> 'association'.
 	
 	observed when: #something: do:[ :arg1 :arg2 | observed at: #something: put: (Array with: arg1 with: arg2) ].
 	
-	observed trigger: #something: with: thing with: stuff.
+	observed triggerEvent: #something: with: thing with: stuff.
 	
 	self assert: (observed includesKey: #something:).	
 	self assert: (observed at: #something:) first == thing.
@@ -83,7 +83,7 @@ testUnobserveCustomEvent
 	
 	observed when: #something do:[ observed at: #something put: #happen ].
 	
-	observed trigger: #something.
+	observed triggerEvent: #something.
 	
 	"Assert reaction"
 	self assert: (observed includesKey: #something).	
@@ -91,12 +91,12 @@ testUnobserveCustomEvent
 	observed removeKey: #something.
 
 	"Assert nonchalance when triggering somethign different"
-	observed trigger: #whatever.
+	observed triggerEvent: #whatever.
 	self deny: (observed includesKey: #something).	
 
 	"Assert nonchalance after unobserving"
-	observed off: #something.
-	observed trigger: #something.
+	observed removeActionsForEvent: #something.
+	observed triggerEvent: #something.
 	self deny: (observed includesKey: #something).
 ! !
 
